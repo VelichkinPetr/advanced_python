@@ -1,4 +1,5 @@
 def requires_access(func):
+
     def wrapper(self,*args,**kwargs):
 
         if args:
@@ -17,15 +18,25 @@ def requires_access(func):
 
     return wrapper
 
+
+
 def log_access(func):
+
     def wrapper(self,*args, **kwargs):
+
         print('===>Попытка входа')
         rez = func(self,*args,**kwargs)
         print('===>Попытка окончена\n')
+
         return rez
+
     return wrapper
 
+
+
 class Employee:
+
+
 
     def __init__(self, name: str, access_zone = None):
         self.__name = name
@@ -37,7 +48,11 @@ class Employee:
     def get_zone(self):
         return self.__access_zone
 
+
+
 class SecuritySystem:
+
+
     def __init__(self):
         self.access_granted = []
         self.access_denied = []
@@ -56,6 +71,8 @@ class SecuritySystem:
     def enter_zone(self, employee, zone):
         self.access_granted.append(f'{employee.get_name()} = {zone}')
         print('    Доступ ВЫДАН')
+
+
 
 e = Employee('Ivan', ["Office"])
 SS = SecuritySystem()
